@@ -62,6 +62,32 @@ const favoriteDessertsGroupB = {
 
 function groupByValue(obj) {
   // do something
+  let outputObject = {};
+
+  // Let's do this in 2 steps.
+  // First, let's create the general structure, where every item is
+  // given an empty array.
+  // {
+  //   pie: [],
+  //   chocolate: [],
+  //   whatever: [],
+  //   // etc
+  // }
+
+  let groupObject = {};
+
+  Object.values(obj).forEach((item) => {
+    groupObject[item] = [];
+  });
+
+  // Next, we'll do another pass, and fill those arrays with people
+  Object.entries(obj).forEach((entry) => {
+    const [key, value] = entry;
+
+    groupObject[value].push(key);
+  });
+
+  return groupObject;
 }
 
 // Verification via console.log()
